@@ -16,6 +16,14 @@ class EditActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
+
+        //업데이터 조건
+        val id = intent.getLongExtra("id",-1L) //데이터 값 없으면 디폴트벨류 값 반환
+        if(id == -1L){ //id가 -1이면 추가모드
+            insertMode()
+        }else { //0이상이면 업데이트 모드
+            updateMode()
+        }
     }
 
     val calendar: Calendar = Calendar.getInstance() //getInstance() 함수로 객체를 얻어옴
